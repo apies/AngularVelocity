@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AngularVelocity</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  
+  <%= csrf_meta_tags %>
+</head>
+
+
+  <body ng-app="AngularVelocityApp">
+    <div class="container" ng-view></div>
+    <%= javascript_include_tag "application" %>
+    <script>angular.bootstrap(document, ['AngularVelocityApp']);</script>
+    <%= yield %>
+
+  </body>
+</html>
