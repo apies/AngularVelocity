@@ -17,5 +17,7 @@
 //= require_directory ./controllers
 //= require_directory ./models
 //= require_tree ./views
+//= require_tree .
+
 
 

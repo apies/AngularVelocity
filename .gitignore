@@ -13,3 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/app
+/config
+/db
+/log
+/public
+/tmp

@@ -9,8 +9,8 @@ module AngularVelocity
       desc "This generator installs angular.js with a default folder layout in app/assets/javascripts/" 
 
       def inject_angular
-        append_to_file "app/assets/javascripts/application.js" do
-         "//= require angular.js\n//= require app\n//= require_directory ./controllers\n//= require_directory ./models\n//= require_tree ./views"
+        insert_into_file "app/assets/javascripts/application.js", :after =>"//= require jquery_ujs" do
+         "\n//= require angular.js\n//= require app\n//= require_directory ./controllers\n//= require_directory ./models\n//= require_tree ./views"
         end
       end
 
@@ -31,12 +31,11 @@ module AngularVelocity
 
       def create_main_rails_controller
         empty_directory "app/views/main" 
-        copy_file "index.html.erb", "app/views/main/index.html.erb"
+        template "index.html.erb", "app/views/main/index.html.erb"
         copy_file "main_controller.rb", "app/controllers/main_controller.rb"
         insert_into_file "config/routes.rb", :after => "Application.routes.draw do" do
           "\n" + %{  get "main/index"\n  root to: "main#index"\n}
         end
-        copy_file("index.html.erb", "app/views/main/index.html.erb")
 
       end
 
