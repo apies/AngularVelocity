@@ -12,6 +12,8 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
+
+#because is a generator
 /tmp
 /app
 /config
@@ -19,3 +21,4 @@
 /log
 /public
 /tmp
+Gemfile.lock
