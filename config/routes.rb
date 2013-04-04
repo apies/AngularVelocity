@@ -1,6 +1,15 @@
 AngularVelocity::Application.routes.draw do
+  get "/templates/:path.html" => "templates#file", :constraints => { :path => /.+/  }
   get "main/index"
   root to: "main#index"
+
+  
+
+
+  # get "/templates/:path.html" => "templates#file", :constraints => { :path => /.+/  }
+  # get "main/index"
+  # root to: "main#index"
+  #get "/templates/:path.html" => "templates#file", :constraints => { :path => /.+/  }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
