@@ -1,4 +1,4 @@
-require 'generators/angular_velocity/angular_config'
+require 'generators/angular_velocity/angular_config' 
 
 module AngularVelocity
   module Generators
