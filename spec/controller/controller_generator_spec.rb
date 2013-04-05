@@ -13,7 +13,6 @@ describe AngularVelocity::Generators::ControllerGenerator do
 
   it "should generator a controller" do
     run_generator ["post"]
-    puts Dir.pwd
     File.file?('spec/tmp/app/assets/javascripts/controllers/post_controller.coffee').should be_true
   end
 
