@@ -1,22 +1,39 @@
 require 'rails/all'
 require 'rspec-rails'
 #require 'rails/generators/test_case'
-
 require "generator_spec/test_case"
+Dir["./spec/support/*.rb"].each {|f| require f}
+
 module AngularVelocity
   class Application < ::Rails::Application
   end
 end
 
 
+module GenSpecHelpers
 
-# Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+  def create_fixtures
+    Dir.mkdir("spec/tmp/config") unless Dir.entries("spec/tmp/").include?("config")
+    FileUtils.mkdir_p('spec/tmp/app/assets/javascripts/') unless Dir.entries("spec/tmp/").include?("app")
+    File.open('spec/tmp/app/assets/javascripts/application.js', 'w') do |f|
+      f.puts "//= require jquery"
+      f.puts "//= require jquery_ujs"
+      f.puts "//= require_tree ."
+    end
+    File.open("spec/tmp/config/routes.rb", 'w') do |f|
+      f.puts "Gui::Application.routes.draw do"
+      f.puts "end" 
+    end
+  end
 
-# class RSpec::Core::ExampleGroup
-#   def self.run_all(reporter=nil)
-#     run(reporter || RSpec::Mocks::Mock.new('reporter').as_null_object)
-#   end
-# end
+  def file_should_exist(file_string)
+    File.file?(file_string).should be_true
+  end
+
+end
+
+
+
 
 # RSpec.configure do |config|
 #   config.treat_symbols_as_metadata_keys_with_true_values = true

@@ -5,6 +5,7 @@ require "generators/angular_velocity/install/install_generator"
 describe AngularVelocity::Generators::InstallGenerator do
 
   include GeneratorSpec::TestCase 
+  include GenSpecHelpers
   
   destination File.expand_path("../../tmp", __FILE__)
 
@@ -14,27 +15,25 @@ describe AngularVelocity::Generators::InstallGenerator do
     run_generator
   end
 
-  def create_fixtures
-    Dir.mkdir("spec/tmp/config") unless Dir.entries("spec/tmp/").include?("config")
-    FileUtils.mkdir_p('spec/tmp/app/assets/javascripts/') unless Dir.entries("spec/tmp/").include?("app")
-    File.open('spec/tmp/app/assets/javascripts/application.js', 'w') do |f|
-      f.puts "//= require jquery"
-      f.puts "//= require jquery_ujs"
-      f.puts "//= require_tree ."
-    end
-    File.open("spec/tmp/config/routes.rb", 'w') do |f|
-      f.puts "Gui::Application.routes.draw do"
-      f.puts "end" 
-    end
-  end
   
-
-  it "should generator an application" do
-    File.file?('spec/tmp/app/assets/javascripts/app.coffee').should be_true
+  it "should generate an application" do
+    file_should_exist('spec/tmp/app/assets/javascripts/app.coffee')
+    expect('spec/tmp/app/assets/javascripts/app.coffee').to contain_text(%{angular.module('aAngularVelocityApp', [])})
   end
 
-  it "should create a main controller" do
-    File.file?('spec/tmp/app/assets/javascripts/controllers/main_controller.coffee').should be_true
+  it "should create a main rails controller with an index view" do
+    file_should_exist('spec/tmp/app/controllers/main_controller.rb')
+    expect('spec/tmp/app/controllers/main_controller.rb').to contain_text('MainController < ApplicationController')
+    file_should_exist('spec/tmp/app/views/main/index.html.erb')
+    
+  end
+
+  it "should create a main_angular controller like yeoman and the seed do" do
+    file_should_exist('spec/tmp/app/assets/javascripts/controllers/main_controller.coffee')
+    expect('spec/tmp/app/assets/javascripts/controllers/main_controller.coffee').to contain_text(%{angular.module('AngularVelocityApp').controller( 'MainCtrl'})
+    file_should_exist('spec/tmp/app/assets/javascripts/views/main_control.html')
+    expect('spec/tmp/app/assets/javascripts/views/main_control.html').to contain_text(%{ <li ng-repeat="thing in awesomeThings">{{thing}}</li>})
+    
   end
 
   
