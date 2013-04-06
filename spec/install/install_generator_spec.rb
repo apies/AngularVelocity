@@ -18,7 +18,7 @@ describe AngularVelocity::Generators::InstallGenerator do
   
   it "should generate an application" do
     file_should_exist('spec/tmp/app/assets/javascripts/app.coffee')
-    expect('spec/tmp/app/assets/javascripts/app.coffee').to contain_text(%{angular.module('aAngularVelocityApp', [])})
+    expect('spec/tmp/app/assets/javascripts/app.coffee').to contain_text(%{angular.module('AngularVelocityApp', [])})
   end
 
   it "should create a main rails controller with an index view" do

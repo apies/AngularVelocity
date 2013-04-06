@@ -1,10 +1,10 @@
 
-RSpec::Matchers.define :contain_text do |file_path_string|
+RSpec::Matchers.define :contain_text do |expected_file_text|
 
 
-  match do |actual_file_text_on_disk|
-    if file_path_string
-      File.readlines(actual_file_text_on_disk).any? {|line| line.include?(file_path_string)}
+  match do |file_path|
+    if file_path
+      File.readlines(file_path).any? {|line| line.include?(expected_file_text)}
     else
       false
     end
@@ -12,9 +12,9 @@ RSpec::Matchers.define :contain_text do |file_path_string|
 
   #
 
-  failure_message_for_should do |actual_file_text_on_disk|
-    "expected that the file #{actual_file_text_on_disk}
-    would contain text #{File.readlines(actual_file_text_on_disk)}"
+  failure_message_for_should do |file_path|
+    "expected that the file #{file_path}
+    would contain text #{expected_file_text}"
   end
 
 end
