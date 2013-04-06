@@ -1,10 +1,11 @@
-require "spec_helper"
+require "spec_helper" 
 
 require "generators/angular_velocity/controller/controller_generator"
 
 describe AngularVelocity::Generators::ControllerGenerator do
 
-  include GeneratorSpec::TestCase 
+  include GeneratorSpec::TestCase
+  include GenSpecHelpers 
   
   destination File.expand_path("../../tmp", __FILE__)
 
@@ -13,7 +14,8 @@ describe AngularVelocity::Generators::ControllerGenerator do
 
   it "should generator a controller" do
     run_generator ["post"]
-    File.file?('spec/tmp/app/assets/javascripts/controllers/post_controller.coffee').should be_true
+    file_should_exist('spec/tmp/app/assets/javascripts/controllers/post_controller.coffee')
+    ('spec/tmp/app/assets/javascripts/controllers/post_controller.coffee').should be_a_file_containing_text(%{angular.module('AngularVelocityApp').controller( 'PostCtrl', [ '$scope', PostController ])})
   end
 
   

@@ -8,19 +8,16 @@ module AngularVelocity
   
       desc "This generator installs angular.js with a default folder layout in app/assets/javascripts/" 
 
-      def inject_angular
-        insert_into_file "app/assets/javascripts/application.js", :after =>"//= require jquery_ujs" do
-         "\n//= require angular.js\n//= require app\n//= require_directory ./controllers\n//= require_directory ./models\n//= require_tree ./views"
-        end
-      end
-
-      def create_application
+      def create_angular_application
         template "app.coffee", "#{angular_path}/app.coffee"
         %W{controllers services models views}.each do |dir|
           empty_directory "#{angular_path}/#{dir}" 
         end
         %W{angular angular-cookies angular-mocks angular-resource angular-sanitize angular-scenario}.each do |file|
           copy_file "#{file}.js", "#{angular_path}/#{file}.js"
+        end
+        insert_into_file "app/assets/javascripts/application.js", :after =>"//= require jquery_ujs" do
+         "\n//= require angular.js\n//= require app\n//= require_directory ./controllers\n//= require_directory ./models\n//= require_tree ./views"
         end
       end
 
