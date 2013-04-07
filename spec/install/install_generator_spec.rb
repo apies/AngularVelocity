@@ -45,7 +45,7 @@ describe AngularVelocity::Generators::InstallGenerator do
   context "the specs" do
     it "the jasmine.yml file should be created" do
       expect("spec/tmp/spec/javascripts/support/jasmine.yml").to be_a_file_containing_text('src_files:')
-    end
+    end  
   end
 
  
