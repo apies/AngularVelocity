@@ -33,7 +33,6 @@ module AngularVelocity
         insert_into_file "config/routes.rb", :after => "Application.routes.draw do" do
           "\n" + %{  get "main/index"\n  root to: "main#index"\n}
         end
-
       end
 
       def create_templates_serving_rails_controller
@@ -42,6 +41,10 @@ module AngularVelocity
         insert_into_file "config/routes.rb", :after => "Application.routes.draw do" do
           "\n" + %{  get "/templates/:path.html" => "templates#file", :constraints => { :path => /.+/  }}
         end
+      end
+
+      def create_angular_jasmine_link
+        copy_file "jasmine.yml", "spec/javascripts/support/jasmine.yml"
       end
 
 

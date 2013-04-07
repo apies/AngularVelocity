@@ -15,7 +15,7 @@ module AngularVelocity
       end
 
       def angular_spec_path
-        "spec/#{application_name}/controllers"
+        "spec/javascripts"
       end
 
     end
