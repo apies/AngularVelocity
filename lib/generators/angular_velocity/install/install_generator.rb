@@ -17,7 +17,7 @@ module AngularVelocity
           copy_file "#{file}.js", "#{angular_path}/#{file}.js"
         end
         insert_into_file "app/assets/javascripts/application.js", :after =>"//= require jquery_ujs" do
-         "\n//= require angular.js\n//= require app\n//= require_directory ./controllers\n//= require_directory ./models\n//= require_tree ./views"
+         "\n//= require ./#{application_name}/angular.js"
         end
       end
 
@@ -30,6 +30,7 @@ module AngularVelocity
       def create_main_rails_controller
         empty_directory "app/views/main" 
         template "index.html.erb", "app/views/main/index.html.erb"
+        copy_file  "AppLoader.js", "#{angular_path}/#{application_name}Loader.js"
         copy_file "main_controller.rb", "app/controllers/main_controller.rb"
         insert_into_file "config/routes.rb", :after => "Application.routes.draw do" do
           "\n" + %{  get "main/index"\n  root to: "main#index"\n}
@@ -45,7 +46,7 @@ module AngularVelocity
       end
 
       def create_angular_jasmine_link
-        copy_file "jasmine.yml", "spec/javascripts/support/jasmine.yml"
+        template "jasmine.yml", "spec/javascripts/support/jasmine.yml"
         insert_into_file "config/routes.rb", :after => "Application.routes.draw do" do
           "\n" + %{  mount JasmineRails::Engine => "/specs" unless Rails.env.production?}
         end

@@ -1,7 +1,7 @@
 src_files:
- - "application.{js,coffee}"
- - "<%= application_name %>/<%= application_name %>Loader.js"
+ - "angular.js"
  - "angular-mocks.js"
+ - "<%= application_name %>Loader.js"
 
 stylesheets:
 

@@ -24,17 +24,20 @@ describe AngularVelocity::Generators::InstallGenerator do
 
     it "should generate an angular application" do
       expect("#{@angular_test_app_path}/app.coffee").to be_a_file_containing_text(%{angular.module('AngularVelocityApp', [])})
-      expect("#{@test_app_path}/assets/javascripts/application.js").to be_a_file_containing_text(%{//= require angular.js})
+      expect("#{@test_app_path}/assets/javascripts/application.js").to be_a_file_containing_text(%{//= require ./AngularVelocityApp/angular.js})
       file_should_exist("#{@angular_test_app_path}/angular-mocks.js")
       file_should_exist("#{@angular_test_app_path}/angular-cookies.js")
       file_should_exist("#{@angular_test_app_path}/angular-resource.js")
       file_should_exist("#{@angular_test_app_path}/angular-sanitize.js")
     end
 
+    it "should package the angular app in an easy to consume sprockets file" do
+      expect("#{@angular_test_app_path}/AngularVelocityAppLoader.js").to be_a_file_containing_text("//= require ./app")
+    end
+
     it "should create a main_angular controller like yeoman and the seed does" do
       expect("#{@angular_test_app_path}/controllers/main_controller.coffee").to be_a_file_containing_text(%{angular.module('AngularVelocityApp').controller( 'MainCtrl'})
-      expect("#{@angular_test_app_path}/views/main_control.html").to be_a_file_containing_text(%{ <li ng-repeat="thing in awesomeThings">{{thing}}</li>})
-      
+      expect("#{@angular_test_app_path}/views/main_control.html").to be_a_file_containing_text(%{ <li ng-repeat="thing in awesomeThings">{{thing}}</li>})      
     end
   end
 

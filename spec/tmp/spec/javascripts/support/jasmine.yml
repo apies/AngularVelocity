@@ -1,7 +1,7 @@
 src_files:
- - "application.{js,coffee}"
- - "<%= application_name %>/<%= application_name %>Loader.js"
+ - "angular.js"
  - "angular-mocks.js"
+ - "AngularVelocityAppLoader.js"
 
 stylesheets:
 
@@ -12,10 +12,10 @@ spec_files:
   - "**/*[Ss]pec.{js,coffee}"
 
 src_dir:
-  - "app/assets/javascripts/<%= application_name %>"
-  - "spec/javascripts/<%= application_name %>"
+  - "app/assets/javascripts/AngularVelocityApp"
+  - "spec/javascripts/AngularVelocityApp"
 
-spec_dir: "spec/javascripts/<%= application_name %>"
+spec_dir: "spec/javascripts/AngularVelocityApp"
 
 asset_paths:
  - "vendor/assets/javascripts"

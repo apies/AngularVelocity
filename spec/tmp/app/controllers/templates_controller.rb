@@ -4,7 +4,7 @@ class TemplatesController < ApplicationController
 
   def file
     @path = params[:path]
-    render :file => "app/assets/javascripts/views/#{@path}" #, :layout => nil
+    render :file => "app/assets/javascripts/AngularVelocityApp/views/#{@path}" #, :layout => nil
   end
   
 end
