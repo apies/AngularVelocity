@@ -2,7 +2,8 @@
     
     <div class="container" ng-view></div>
     
-    <script>angular.bootstrap(document, ['<%= application_name %>']);</script>
+    <%%= javascript_include_tag "<%= application_name %>/<%= application_name %>Loader" %>
+
     
   </div>
 

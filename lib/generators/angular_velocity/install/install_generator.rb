@@ -24,6 +24,7 @@ module AngularVelocity
       def create_main_angular_controller
         template "main_controller.coffee", "#{angular_path}/controllers/main_controller.coffee"
         copy_file("main_control.html", "#{angular_path}/views/main_control.html")
+        template "main_controller_spec.coffee", "#{angular_spec_path}/controllers/main_controller_spec.coffee"
       end
 
       def create_main_rails_controller
@@ -45,6 +46,9 @@ module AngularVelocity
 
       def create_angular_jasmine_link
         copy_file "jasmine.yml", "spec/javascripts/support/jasmine.yml"
+        insert_into_file "config/routes.rb", :after => "Application.routes.draw do" do
+          "\n" + %{  mount JasmineRails::Engine => "/specs" unless Rails.env.production?}
+        end
       end
 
 

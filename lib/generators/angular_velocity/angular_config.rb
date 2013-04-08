@@ -11,11 +11,11 @@ module AngularVelocity
       end
 
       def angular_path
-        "app/assets/javascripts/"
+        "app/assets/javascripts/#{application_name}"
       end
 
       def angular_spec_path
-        "spec/javascripts"
+        "spec/javascripts/#{application_name}"
       end
 
     end

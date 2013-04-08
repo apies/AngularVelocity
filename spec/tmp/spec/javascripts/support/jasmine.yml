@@ -1,5 +1,7 @@
 src_files:
  - "application.{js,coffee}"
+ - "<%= application_name %>/<%= application_name %>Loader.js"
+ - "angular-mocks.js"
 
 stylesheets:
 
@@ -9,9 +11,14 @@ helpers:
 spec_files:
   - "**/*[Ss]pec.{js,coffee}"
 
-src_dir: "app/assets/javascripts"
+src_dir:
+  - "app/assets/javascripts/<%= application_name %>"
+  - "spec/javascripts/<%= application_name %>"
 
-spec_dir: spec/javascripts
+spec_dir: "spec/javascripts/<%= application_name %>"
 
 asset_paths:
  - "vendor/assets/javascripts"
+
+
+
