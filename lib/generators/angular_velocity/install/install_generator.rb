@@ -52,6 +52,10 @@ module AngularVelocity
         end
       end
 
+      def create_angular_velocity_initializer
+        copy_file  "angular_velocity.rb", "config/initializers/angular_velocity.rb"
+      end
+
 
 
 

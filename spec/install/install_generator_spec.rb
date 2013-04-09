@@ -54,6 +54,10 @@ describe AngularVelocity::Generators::InstallGenerator do
       expect('spec/tmp/config/routes.rb').to be_a_file_containing_text(%{get "/templates/:path.html" => "templates#file", :constraints => { :path => /.+/  }})
     end
 
+    it "should create an initializer for jasmine rails that requires it" do
+      expect("spec/tmp/config/initializers/angular_velocity.rb").to be_a_file_containing_text("require 'jasmine-rails'")
+    end
+
 
   end
 

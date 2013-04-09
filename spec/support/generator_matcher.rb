@@ -13,7 +13,7 @@ RSpec::Matchers.define :be_a_file_containing_text do |expected_file_text|
   end
 
   failure_message_for_should do |file_path|
-    generate_failure_message
+    generate_failure_message(file_path)
   end
 
   description do
@@ -28,7 +28,7 @@ RSpec::Matchers.define :be_a_file_containing_text do |expected_file_text|
     file_path && File.file?(file_path)
   end
 
-  def generate_failure_message
+  def generate_failure_message(file_path)
     if @file_not_found
       "the file at path #{file_path} does not exist"
     elsif @nil_file
