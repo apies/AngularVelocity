@@ -14,6 +14,7 @@
 /log/*.log
 
 #because is a generator
+/spec/tmp
 /tmp
 /app
 /config
