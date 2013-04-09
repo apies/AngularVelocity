@@ -12,7 +12,7 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
-
+*.gem
 #because is a generator
 /spec/tmp
 /tmp
