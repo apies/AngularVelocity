@@ -5,6 +5,7 @@ RSpec::Matchers.define :be_a_file_containing_text do |expected_file_text|
 
 
   match do |file_path|
+    @expected_file_text = expected_file_text
     if is_a_file(file_path)
       File.readlines(file_path).any? {|line| line.include?(expected_file_text)}
     else
@@ -35,7 +36,7 @@ RSpec::Matchers.define :be_a_file_containing_text do |expected_file_text|
       "something strange going on here, you didnt pass a file_path"
     else
       "expected that the file #{file_path}
-        would contain text #{expected_file_text}"
+        would contain text #{@expected_file_text}"
     end
   end
 

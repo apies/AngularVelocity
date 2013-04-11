@@ -25,9 +25,7 @@ describe AngularVelocity::Generators::ControllerGenerator do
 
   it "should generate a post controller spec" do
     controller_spec_path = "#{angular_test_app_spec_path}/controllers/post_controller_spec.coffee" 
-
     controller_spec_path.should be_a_file_containing_text(%{describe "Controller: PostCtrl", () ->})
-    
   end
 
   

@@ -13,6 +13,10 @@ module AngularVelocity
       def create_angular_service
         template "service.coffee", "#{angular_path}/services/#{file_name}_service.coffee"
       end
+
+      def create_angular_service_spec
+        template "service_spec.coffee", "#{angular_spec_path}/services/#{file_name}_service_spec.coffee"
+      end
       
     end
 
