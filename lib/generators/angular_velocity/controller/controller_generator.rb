@@ -14,6 +14,10 @@ module AngularVelocity
         template "controller.coffee", "#{angular_path}/controllers/#{file_name}_controller.coffee"
       end
 
+      def create_angular_controller_spec
+        template "controller_spec.coffee", "#{angular_spec_path}/controllers/#{file_name}_controller_spec.coffee"
+      end
+
       
     end
 
