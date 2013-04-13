@@ -7,9 +7,9 @@ describe "Service: <%= file_name.camelize %>", () ->
   beforeEach(module('<%= application_name %>Service'))
   <%= file_name.camelize %> = {}
   scope = {}
-  beforeEach(inject( (_<%= file_name.camelize %>_, _$httpBackend_, $rootScope, $controller) ->
+  beforeEach(inject( ( _$httpBackend_, $rootScope, _<%= file_name.camelize %>_ ) ->
     $httpBackend = _$httpBackend_
-    $httpBackend.whenGET('api/<%= file_name.pluralize %>').respond([{a, b, c},{a, b, c}])
+    $httpBackend.whenGET('api/<%= file_name.pluralize %>').respond([{content:"msg1"}, {content: "ms2"}])
 
     scope = $rootScope.$new()
     <%= file_name.camelize %> = _<%= file_name.camelize %>_
