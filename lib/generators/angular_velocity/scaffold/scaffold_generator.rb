@@ -12,9 +12,21 @@ module AngularVelocity
   	  source_root File.expand_path('../../controller/templates', __FILE__)    
       desc "This generator creates an angular service"
 
-      def run_scaffold_generators
+      def run_rails_generators
+        pp "2"
+        Rails::Generators.invoke("controller", [file_name])
+        Rails::Generators.invoke("model", [file_name])
+      end
+
+      def run_angular_generators
+        pp "2"
         Rails::Generators.invoke("angular_velocity:controller", [file_name])
-      end 
+        Rails::Generators.invoke("angular_velocity:service", [file_name])
+      end
+
+
+
+
     end
   end
 end
