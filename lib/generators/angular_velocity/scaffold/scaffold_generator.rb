@@ -13,13 +13,11 @@ module AngularVelocity
       desc "This generator creates an angular service"
 
       def run_rails_generators
-        pp "2"
         Rails::Generators.invoke("controller", [file_name])
         Rails::Generators.invoke("model", [file_name])
       end
 
       def run_angular_generators
-        pp "2"
         Rails::Generators.invoke("angular_velocity:controller", [file_name])
         Rails::Generators.invoke("angular_velocity:service", [file_name])
       end
