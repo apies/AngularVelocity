@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["alan.lee.pies@gmail.com","shayne.defazio@move.com"]
   spec.description   = %q{Setup new rails projects for angular/jasmine, includes generators for angular MVC files.}
   spec.summary       = %q{angular/jasmine seed for rails}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/apies/AngularVelocity"
   spec.license       = "MIT"
 
   spec.files         = (`git ls-files`.split($/)).select { |file_name| !file_name.include?("tmp") }
