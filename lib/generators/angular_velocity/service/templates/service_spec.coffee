@@ -26,7 +26,7 @@ describe "Service: <%= file_name.camelize %>", () ->
     <%= file_name %> = new <%= file_name.camelize %>
     <%= file_name %>.instantiate(name: 'Quiet Like Horses')
     expect(<%= file_name %>.name).toBe('Quiet Like Horses')
-  it 'should be a base for more specific <%= file_name %>.pluralize', () ->
+  it "should be a base for more specific <%= file_name.pluralize %>", () ->
     class <%= file_name.camelize %>Thing extends <%= file_name.camelize %>
       thing: 'thing'
     <%= file_name %>_thing = new <%= file_name.camelize %>Thing

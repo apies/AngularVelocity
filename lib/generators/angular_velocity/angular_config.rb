@@ -11,11 +11,21 @@ module AngularVelocity
       end
 
       def angular_path
-        "app/assets/javascripts/#{application_name}"
+        path = ""
+        if Rails.env == "test"
+          path = "spec/tmp/app/assets/javascripts/#{application_name}"
+        else
+          path = "app/assets/javascripts/#{application_name}"
+        end
+        path
       end
 
       def angular_spec_path
-        "spec/javascripts/#{application_name}"
+        if Rails.env == "test"
+          "spec/tmp/spec/javascripts/#{application_name}"
+        else
+          "spec/javascripts/#{application_name}"
+        end
       end
 
     end

@@ -1,7 +1,11 @@
+ENV["RAILS_ENV"] = 'test'
+
 require 'rails/all'
 require 'rspec-rails'
 #require 'rails/generators/test_case'
 require "generator_spec/test_case"
+require 'generators/angular_velocity/angular_config'
+
 Dir["./spec/support/*.rb"].each {|f| require f}
 
 module AngularVelocity
@@ -10,12 +14,13 @@ module AngularVelocity
 end
 
 
-module GenSpecHelpers
+module GenSpecHelpers 
 
   def create_fixtures
     Dir.mkdir("spec/tmp/config") unless Dir.entries("spec/tmp/").include?("config")
-    FileUtils.mkdir_p('spec/tmp/app/assets/javascripts/') unless Dir.entries("spec/tmp/").include?("app")
+    FileUtils.mkdir_p('spec/tmp/app/assets/javascripts/') #unless Dir.entries("spec/tmp/").include?("AngularVelocityApp")
     File.open('spec/tmp/app/assets/javascripts/application.js', 'w') do |f|
+      pp "IN create_fixtures"
       f.puts "//= require jquery"
       f.puts "//= require jquery_ujs"
       f.puts "//= require_tree ."
@@ -24,6 +29,7 @@ module GenSpecHelpers
       f.puts "Gui::Application.routes.draw do"
       f.puts "end" 
     end
+    FileUtils.mkdir_p("#{angular_path}/controllers")
   end
 
   def file_should_exist(file_string)
