@@ -17,15 +17,19 @@ module AngularVelocity
         else
           path = "app/assets/javascripts/#{application_name}"
         end
+        path = Rails.root.join(path)
         path
       end
 
       def angular_spec_path
+        path = ""
         if Rails.env == "test"
-          "spec/tmp/spec/javascripts/#{application_name}"
+          path =  "spec/tmp/spec/javascripts/#{application_name}"
         else
-          "spec/javascripts/#{application_name}"
+          path ="spec/javascripts/#{application_name}"
         end
+        path = Rails.root.join(path)
+        path
       end
 
     end

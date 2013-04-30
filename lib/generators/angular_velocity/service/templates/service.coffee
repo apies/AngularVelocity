@@ -1,4 +1,4 @@
-angular.module('<%= application_name %>Service', []).factory( '<%= file_name.camelize %>', [ '$http', ($http, $scope) -> 
+angular.module('<%= application_name %>Service').factory( '<%= file_name.camelize %>', [ '$http', ($http, $scope) -> 
   class <%=file_name.camelize %>
     constructor: (data) ->
       @instantiate(data)

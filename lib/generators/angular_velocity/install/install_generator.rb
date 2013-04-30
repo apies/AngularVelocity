@@ -27,6 +27,10 @@ module AngularVelocity
         template "main_controller_spec.coffee", "#{angular_spec_path}/controllers/main_controller_spec.coffee"
       end
 
+      def create_main_angular_service
+        template "main_angular_service.coffee", "#{angular_path}/services/#{application_name}_service.coffee"
+      end
+
       def create_main_rails_controller
         empty_directory "app/views/main" 
         template "index.html.erb", "app/views/main/index.html.erb"

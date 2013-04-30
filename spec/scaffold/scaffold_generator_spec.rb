@@ -18,19 +18,16 @@ describe AngularVelocity::Generators::ScaffoldGenerator do
       create_fixtures
       @resource_name = "scaffold_test"
       run_generator [@resource_name] 
-      @angular_test_app_path = "#{angular_path}"
-      @test_app_path = "spec/tmp/app"
-      @angular_spec_path = "#{angular_spec_path}"
     end
 
   	it "should generate a controller" do
-    	("#{@angular_test_app_path}/controllers/#{@resource_name}_controller.coffee").should be_a_file_containing_text(%{angular.module('AngularVelocityApp').controller( '#{@resource_name.camelize}Ctrl', [ '$scope', #{@resource_name.camelize}Controller ])})
-      file_should_exist("#{@angular_spec_path}/controllers/#{@resource_name}_controller_spec.coffee")
+    	("#{angular_path}/controllers/#{@resource_name}_controller.coffee").should be_a_file_containing_text(%{angular.module('AngularVelocityApp').controller( '#{@resource_name.camelize}Ctrl', [ '$scope', #{@resource_name.camelize}Controller ])})
+      file_should_exist("#{angular_spec_path}/controllers/#{@resource_name}_controller_spec.coffee")
   	end
 
     it "should generate a service" do
-      file_should_exist "#{@angular_spec_path}/services/#{@resource_name}_service_spec.coffee"
-      ("#{@angular_test_app_path}/services/#{@resource_name}_service.coffee").should be_a_file_containing_text(%{  class #{@resource_name.camelize}})
+      file_should_exist "#{angular_spec_path}/services/#{@resource_name}_service_spec.coffee"
+      ("#{angular_path}/services/#{@resource_name}_service.coffee").should be_a_file_containing_text(%{  class #{@resource_name.camelize}})
     end
   end
 
