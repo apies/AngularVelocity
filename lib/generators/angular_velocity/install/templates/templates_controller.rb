@@ -1,6 +1,7 @@
 class TemplatesController < ApplicationController
   
-  caches_page :file
+  ## this is deprecated in rails 4
+  #caches_page :file
 
   def file
     @path = params[:path]

@@ -1,3 +1,3 @@
 module AngularVelocity
-  VERSION = "0.0.5alpha"
+  VERSION = "1.0.0"
 end
